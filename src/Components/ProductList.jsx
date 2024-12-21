@@ -2,12 +2,10 @@ import React, { useEffect } from "react";
 import Card from "./Card";
 import "./ProductList.scss";
 
-function ProductList() {
+function ProductList({ onAddToCart }) {
     useEffect(() => {
-        // Setze eine spezifische Klasse für den body
         document.body.classList.add("productlist");
 
-        // Entferne die Klasse beim Verlassen der Seite (z.B. beim Unmounting der Komponente)
         return () => {
             document.body.classList.remove("productlist");
         };
@@ -19,7 +17,7 @@ function ProductList() {
             name: "Monstera",
             price: 25,
             category: "Air Purifying Plants",
-            image: "assets/plants/01-nasim-keshmiri-oViZwzA0qI0-unsplash copy.jpg",
+            image: "assets/plants/01-nasim-keshmiri-oViZwzA0qI0-unsplash.jpg",
         },
         {
             id: 2,
@@ -37,10 +35,10 @@ function ProductList() {
         },
         {
             id: 4,
-            name: "ZZ Plant",
-            price: 18,
+            name: "Succulent",
+            price: 10,
             category: "Low Maintenance Plants",
-            image: "assets/plants/04-feey-1gwjE0c3PSQ-unsplash.jpg",
+            image: "assets/plants/09-stephanie-harvey-T0inbt7nRME-unsplash.jpg",
         },
         {
             id: 5,
@@ -72,11 +70,12 @@ function ProductList() {
         },
         {
             id: 9,
-            name: "Succulent",
-            price: 10,
+            name: "ZZ Plant",
+            price: 18,
             category: "Low Maintenance Plants",
-            image: "assets/plants/09-stephanie-harvey-T0inbt7nRME-unsplash.jpg",
+            image: "assets/plants/04-feey-1gwjE0c3PSQ-unsplash.jpg",
         },
+        
         {
             id: 10,
             name: "Cactus",
@@ -114,31 +113,31 @@ function ProductList() {
         },
         {
             id: 15,
-            name: "String of Pearls",
-            price: 25,
-            category: "Low Maintenance Plants",
-            image: "assets/plants/15-jennifer-burk-tRU_e2bsFuI-unsplash.jpg",
-        },
-        {
-            id: 16,
             name: "Lavender",
             price: 18,
             category: "Low Maintenance Plants",
             image: "assets/plants/16-josephine-lityo-chyPcrDjcZg-unsplash.jpg",
         },
         {
+            id: 16,
+            name: "String of Pearls",
+            price: 25,
+            category: "Low Maintenance Plants",
+            image: "assets/plants/15-jennifer-burk-tRU_e2bsFuI-unsplash.jpg",
+        },
+        {
             id: 17,
             name: "Bamboo Palm",
             price: 40,
             category: "Large Plants",
-            image: "assets/plants/17-still-life-with-indoor-plants-2.jpg",
+            image: "assets/plants/17-still-life-with-indoor-plants.jpg",
         },
         {
             id: 18,
             name: "Rubber Plant",
             price: 35,
             category: "Large Plants",
-            image: "assets/plants/17-scott-webb-Mp38Mp9TJH8-unsplash.jpg",
+            image: "assets/plants/18-scott-webb-Mp38Mp9TJH8-unsplash.jpg",
         },
     ];
 
@@ -153,7 +152,7 @@ function ProductList() {
             <section className="hero">
                 <div className="hero__container">
                     <div className="hero__image">
-                        <img src="assets/hero-image-2.webp" alt="" />
+                        <img src="assets/hero-image-2.webp" alt="Hero Banner" />
                     </div>
 
                     <div className="hero__item hero__item--title">
@@ -169,7 +168,11 @@ function ProductList() {
                             {plants
                                 .filter((plant) => plant.category === category)
                                 .map((plant) => (
-                                    <Card key={plant.id} plant={plant} />
+                                    <Card
+                                        key={plant.id}
+                                        plant={plant}
+                                        onAddToCart={onAddToCart}
+                                    />
                                 ))}
                         </div>
                     </div>
@@ -180,3 +183,4 @@ function ProductList() {
 }
 
 export default ProductList;
+

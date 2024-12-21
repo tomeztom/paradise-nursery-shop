@@ -1,7 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom"; // Importiere NavLink
+import { NavLink } from "react-router-dom";
+import './Header.scss';
 
-function Header() {
+function Header({ cartCount }) {
     return (
         <header className="header">
             <div className="header__container">
@@ -25,7 +26,7 @@ function Header() {
                                     isActive
                                         ? "header__nav-link active"
                                         : "header__nav-link"
-                                } // Setze die aktive Klasse
+                                }
                             >
                                 Home
                             </NavLink>
@@ -37,7 +38,7 @@ function Header() {
                                     isActive
                                         ? "header__nav-link active"
                                         : "header__nav-link"
-                                } // Setze die aktive Klasse
+                                }
                             >
                                 Plants
                             </NavLink>
@@ -45,8 +46,8 @@ function Header() {
                     </ul>
                 </nav>
                 <div className="header__cart">
-                    <a
-                        href="/cart"
+                    <NavLink
+                        to="/cart"
                         className="header__cart-link"
                         aria-label="Shopping Cart"
                     >
@@ -81,9 +82,9 @@ function Header() {
                             />
                         </svg>
                         <span className="header__cart-count" aria-live="polite">
-                            0
+                            {cartCount} {/* Warenkorbanzahl */}
                         </span>
-                    </a>
+                    </NavLink>
                 </div>
             </div>
         </header>
