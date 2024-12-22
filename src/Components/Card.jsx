@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Card.scss";
 
-function Card({ plant, onAddToCart }) {
-    const [isAdded, setIsAdded] = useState(false); // Zustand für Button
-
+function Card({ plant, onAddToCart, isInCart }) {
     const handleAddToCart = () => {
-        if (!isAdded) {
-            onAddToCart(); // Funktion aus ProductList aufrufen
-            setIsAdded(true); // Button deaktivieren
+        if (!isInCart) {
+            onAddToCart(plant);
         }
     };
 
@@ -23,14 +20,12 @@ function Card({ plant, onAddToCart }) {
                 <h3 className="card__name">{plant.name}</h3>
                 <p className="card__price">${plant.price}</p>
                 <button
-                    className={`btn btn-primary item ${
-                        isAdded ? "disabled" : ""
-                    }`}
+                    className={`btn btn-primary ${isInCart ? "disabled" : ""}`}
                     onClick={handleAddToCart}
-                    disabled={isAdded}
+                    disabled={isInCart}
                 >
-                    {isAdded ? "Added to Cart" : "Add to Cart"}
-                    {!isAdded && (
+                    {isInCart ? "Added to Cart" : "Add to Cart"}
+                    {!isInCart && (
                         <span className="btn-arrow">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

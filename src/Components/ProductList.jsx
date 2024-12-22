@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import Card from "./Card";
+import { Link } from "react-router-dom";
 import "./ProductList.scss";
 
-function ProductList({ onAddToCart }) {
+function ProductList({ onAddToCart, cartItems, cartCount }) {
     useEffect(() => {
         document.body.classList.add("productlist");
 
@@ -75,7 +76,7 @@ function ProductList({ onAddToCart }) {
             category: "Low Maintenance Plants",
             image: "assets/plants/04-feey-1gwjE0c3PSQ-unsplash.jpg",
         },
-        
+
         {
             id: 10,
             name: "Cactus",
@@ -172,15 +173,24 @@ function ProductList({ onAddToCart }) {
                                         key={plant.id}
                                         plant={plant}
                                         onAddToCart={onAddToCart}
+                                        isInCart={cartItems.some(
+                                            (item) => item.id === plant.id
+                                        )}
                                     />
                                 ))}
                         </div>
                     </div>
                 ))}
             </section>
+            {cartCount > 0 && (
+                <div className="fixed-cart-button">
+                    <Link to="/cart" className="btn btn-tertiary">
+                        Go to Cart <span className="btn-count">{cartCount}</span>
+                    </Link>
+                </div>
+            )}
         </main>
     );
 }
 
 export default ProductList;
-

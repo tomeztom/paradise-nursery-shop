@@ -5,6 +5,7 @@
     --color-primary: #004a5b;
     --color-secondary: #7136ed;
     --color-text: #333333;
+    --color-gray: #8a8a8a;
     --color-text-inverted: #ffffff;
     --font-family: "Inter", sans-serif;
     --nav-link-color: var(--color-primary);
@@ -893,12 +894,12 @@ p:last-child {
 }
 
 /* Buttons */
+
 .btn {
     align-items: center;
-    background: var(--color-secondary, #7136ed);
     border: none;
     clip-path: var(--sc-h48);
-    color: var(--color-text-inverted, #fff);
+    color: var(--color-primary);
     cursor: pointer;
     display: flex;
     font-size: 1rem;
@@ -915,6 +916,26 @@ p:last-child {
         background-color: #ccc;
         cursor: not-allowed;
     }
+
+    &.btn-primary {
+        background-color: var(--color-secondary, #7136ed);
+        color: var(--color-text-inverted, #fff);
+
+        &:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    }
+
+    &.btn-tertiary {
+        background-color: #000000;
+        color: var(--color-text-inverted, #fff);
+        transition: background-color 0.3s ease-in-out;
+
+        &:is(:hover) {
+            background-color: #3d3d3d;
+        }
+    }
 }
 .btn-arrow {
     align-items: center;
@@ -927,6 +948,28 @@ p:last-child {
 .btn:hover .btn-arrow svg,
 .link:hover .btn-arrow svg {
     animation: arrow 1.5s;
+}
+
+.fixed-cart-button {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.btn-tertiary {
+    padding: 6px 6px 6px var(--sp-8);
+
+    .btn-count {
+        background-color: #6e6e6e; 
+        height: 40px;
+        width: 40px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @keyframes arrow {

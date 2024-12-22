@@ -34,7 +34,7 @@ function About() {
                                 className="btn btn-primary item"
                             >
                                 Get Started
-                                <div className="btn-arrow">
+                                <span className="btn-arrow">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="14"
@@ -50,7 +50,7 @@ function About() {
                                             stroke="currentColor"
                                         ></path>
                                     </svg>
-                                </div>
+                                </span>
                             </Link>
                         </div>
                         <div className="hero__item hero__item--text">
